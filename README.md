@@ -1,23 +1,25 @@
 # Urban Heat and Health Regression (Go)
 
-This project gives you an assignment-ready Go workflow for:
+This project is a Go-based data pipeline for analyzing the relationship between urban heat exposure and health risk.
+It includes:
 - loading temperature, demographics, and health datasets
 - cleaning and merging data
 - spatial matching by latitude/longitude (nearest temperature point)
 - training a multiple linear regression model
-- analysing differences across years, cities, and districts
-- exporting processed CSVs and model outputs
+- comparing results across years, cities, and districts
+- generating exploration reports and plots
+- exporting processed CSVs, predictions, and model summaries
 
 ## Project Structure
 
 - `cmd/prepare_singapore_airtemp`: converts provided Singapore JSON into `temperature` CSV format
 - `cmd/heatmodel`: main pipeline and regression runner
-- `internal/pipeline`: reusable loading, matching, model, and report code
+- `internal/pipeline`: reusable loading, matching, exploration, model, plotting, and report code
 - `dataset`: sample datasets and raw JSON
 - `output`: generated processed files (created at runtime)
-- `prompts/prompt_log_template.md`: Gen AI prompt log template
+- `prompts/prompt_log.md`: phased AI prompt log used during development
 
-## 1) Dataset Column Requirements
+## Dataset Column Requirements
 
 ### Temperature CSV
 Required columns:
@@ -51,7 +53,7 @@ Required columns:
 - `lon`
 - `heat_cases_per_100k`
 
-## 2) Quick Start with Included Files
+## Quick Start
 
 Generate a temperature CSV from the provided Singapore JSON:
 
@@ -74,30 +76,40 @@ go run ./cmd/heatmodel \
   -seed 42
 ```
 
-## 3) Output Files
+## Outputs
 
 After running `cmd/heatmodel`, these files are created:
 - `output/processed_merged.csv`
 - `output/predictions.csv`
 - `output/model_report.txt`
+- `output/data_exploration.txt`
+- `output/plots/temperature_rows_by_year.svg`
+- `output/plots/temperature_histogram.svg`
+- `output/plots/mean_heat_cases_by_district.svg`
 
 `model_report.txt` includes:
 - regression metrics (`RMSE`, `MAE`, `R^2`)
 - learned coefficients
 - grouped summaries by year, city, district
+- short summary and conclusion
 
-## 4) Mapping to Assignment Tasks
+`data_exploration.txt` includes:
+- parsed vs dropped row counts per dataset
+- coverage by city/year/district
+- feature statistics (count/min/max/mean)
 
-1. **Load and explore datasets**: CSV loaders in `internal/pipeline/csvio.go`
-2. **Clean and prepare**: invalid rows are dropped during parsing
-3. **Spatial matching**: Haversine nearest-neighbour in `internal/pipeline/merge.go`
-4. **Regression model in Go**: OLS in `internal/pipeline/regression.go`
-5. **Differences across year/district/city**: grouped summaries in report
-6. **AI prompts and validation**: fill `prompts/prompt_log_template.md`
-7. **Presentation insights**: derive charts/tables from output CSV/report
+## How the Pipeline Works
 
-## 5) Replace with Lecturer Datasets
+1. **Load data** from CSV files (`internal/pipeline/csvio.go`)
+2. **Clean rows** with strict field parsing and optional defaults
+3. **Spatially match** health rows to nearest temperature points (`internal/pipeline/merge.go`)
+4. **Explore data** via textual stats (`internal/pipeline/explore.go`) and SVG plots (`internal/pipeline/plot.go`)
+5. **Train model** with OLS regression (`internal/pipeline/regression.go`)
+6. **Evaluate and summarize** with metrics and grouped comparisons (`internal/pipeline/report.go`)
 
-Use the same required column names in your real CSV files. If your source files use different names, rename the headers before running.
+## Using Your Own Datasets
 
-For multiple cities (Singapore, Bangkok, Jakarta, Shanghai), keep city names in the `city` column and place all rows in the same CSV files.
+Use the same required column names in your CSV files.
+If source files have different headers, rename them before running.
+
+For multi-city analysis, keep city names in the `city` column and combine rows in shared CSV files.

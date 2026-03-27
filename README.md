@@ -107,9 +107,3 @@ After running `cmd/heatmodel`, these files are created:
 5. **Train model** with OLS regression (`internal/pipeline/regression.go`)
 6. **Evaluate and summarize** with metrics and grouped comparisons (`internal/pipeline/report.go`)
 
-## Using Your Own Datasets
-
-Use the same required column names in your CSV files.
-If source files have different headers, rename them before running.
-
-For multi-city analysis, keep city names in the `city` column and combine rows in shared CSV files.

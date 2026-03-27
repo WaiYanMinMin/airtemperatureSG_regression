@@ -1,0 +1,16 @@
+city,district,year,population,elderly_share,income_index
+Singapore,S108,2024,120000,0.12,1.10
+Singapore,S109,2024,180000,0.14,1.05
+Singapore,S117,2024,70000,0.09,0.95
+Singapore,S107,2024,110000,0.11,1.08
+Singapore,S104,2024,160000,0.13,1.00
+Singapore,S115,2024,90000,0.10,0.97
+Singapore,S116,2024,130000,0.12,1.03
+Singapore,S102,2024,50000,0.08,0.90
+Singapore,S60,2024,40000,0.07,1.20
+Singapore,S50,2024,100000,0.11,1.02
+Singapore,S44,2024,95000,0.10,0.99
+Singapore,S43,2024,140000,0.13,1.01
+Singapore,S24,2024,125000,0.12,1.04
+Singapore,S111,2024,115000,0.14,1.30
+Singapore,S121,2024,105000,0.11,0.98

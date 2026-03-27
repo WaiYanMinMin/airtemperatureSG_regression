@@ -1,0 +1,4 @@
+city,district,year,heat_cases_per_100k,predicted_heat_cases_per_100k,residual
+Singapore,S102,2024,31.900000,33.843602,-1.943602
+Singapore,S108,2024,42.200000,40.600009,1.599991
+Singapore,S115,2024,34.200000,38.344599,-4.144599

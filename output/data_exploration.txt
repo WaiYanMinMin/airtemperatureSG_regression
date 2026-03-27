@@ -1,0 +1,74 @@
+Data Exploration Report
+=======================
+
+1) Data Quality (Raw vs Parsed)
+-------------------------------
+dataset,raw_rows,parsed_rows,dropped_rows
+Temperature,356,356,0
+Demographics,15,15,0
+Health,15,15,0
+
+2) Coverage
+-----------
+Temperature by City
+-------------------
+group,count
+Singapore,356
+
+Demographics by City
+--------------------
+group,count
+Singapore,15
+
+Health by City
+--------------
+group,count
+Singapore,15
+
+Temperature by Year
+-------------------
+group,count
+2024,356
+
+Demographics by Year
+--------------------
+group,count
+2024,15
+
+Health by Year
+--------------
+group,count
+2024,15
+
+Health by District
+------------------
+group,count
+Singapore::S102,1
+Singapore::S104,1
+Singapore::S107,1
+Singapore::S108,1
+Singapore::S109,1
+Singapore::S111,1
+Singapore::S115,1
+Singapore::S116,1
+Singapore::S117,1
+Singapore::S121,1
+Singapore::S24,1
+Singapore::S43,1
+Singapore::S44,1
+Singapore::S50,1
+Singapore::S60,1
+
+
+3) Numeric Feature Stats
+------------------------
+temperature_c,count=356,min=28.200000,max=29.600000,mean=28.814326
+population,count=15,min=40000.000000,max=180000.000000,mean=108666.666667
+elderly_share,count=15,min=0.070000,max=0.140000,mean=0.111333
+income_index,count=15,min=0.900000,max=1.300000,mean=1.041333
+heat_cases_per_100k,count=15,min=30.400000,max=45.000000,mean=37.646667
+
+Notes:
+- dropped_rows = raw_rows - parsed_rows
+- parsed rows are rows that passed required field parsing
+- this exploration step supports assignment task #1 before modeling

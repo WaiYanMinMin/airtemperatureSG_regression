@@ -1,0 +1,53 @@
+Heat-Health Regression Report
+=============================
+
+Model Metrics
+-------------
+Trained at : 2026-03-28 02:35:40
+RMSE       : 2.799718
+MAE        : 2.562731
+R^2        : 0.597755
+
+Model Coefficients
+------------------
+Feature                  Coefficient
+-------------------- ---------------
+elderly_share           287.86846840
+income_index              5.99863598
+intercept              -163.68022583
+population               -0.00010240
+temperature_c             6.04914926
+
+Comparison by Year
+------------------
+Group                        N   Mean Actual     Mean Pred  Mean Residual
+------------------------ ----- ------------- ------------- --------------
+2024                         3     36.100000     37.596070      -1.496070
+
+Comparison by City
+------------------
+Group                        N   Mean Actual     Mean Pred  Mean Residual
+------------------------ ----- ------------- ------------- --------------
+Singapore                    3     36.100000     37.596070      -1.496070
+
+Comparison by District
+----------------------
+Group                        N   Mean Actual     Mean Pred  Mean Residual
+------------------------ ----- ------------- ------------- --------------
+Singapore::S102              1     31.900000     33.843602      -1.943602
+Singapore::S108              1     42.200000     40.600009       1.599991
+Singapore::S115              1     34.200000     38.344599      -4.144599
+
+Short Summary
+-------------
+- The regression explains 59.78% of observed variation (R^2 = 0.5978), indicating a moderate overall fit.
+- Prediction error is RMSE = 2.7997 and MAE = 2.5627 heat cases per 100k.
+- In this run, the strongest positive predictor is `elderly_share` (coefficient 287.8685).
+- Largest district-level mismatch is Singapore::S115 with mean residual -4.1446, suggesting local effects not fully captured.
+
+Conclusion
+----------
+- This model is a solid baseline for the assignment and shows that temperature and demographic factors are associated with heat-related health risk.
+- Results should be interpreted carefully because the current evaluation set is small; adding more years/districts/cities is likely to improve robustness.
+- Recommended next steps: include more predictors (e.g., humidity, rainfall, green cover), then compare metrics after retraining.
+
